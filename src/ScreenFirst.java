@@ -36,7 +36,7 @@ public class ScreenFirst {
         //Criação do botão "Estudar"
 
         JButton buttonEstudy = new JButton();
-        buttonEstudy.setText("ESTUDAR");
+        buttonEstudy.setText("ESTUDARr");
         buttonEstudy.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonEstudy.setMaximumSize(new Dimension(200, buttonEstudy.getPreferredSize().height));
         panelMain.add(buttonEstudy);
