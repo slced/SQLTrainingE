@@ -12,9 +12,12 @@ public class ScreenFirst {
         frameMain.setTitle("Início");
         frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //---------------------------------------------------
+        //Background da tela
+        String backgroundImagePath = "C:\\Users\\EDSON JUNIOR\\IdeaProjects\\SQLTrainingE\\src\\img\\backgroundfirst.jpg";
+        //-------------------------------------
 
         //Criação do Layout principal da página
-        JPanel panelMain = new JPanel();
+        BackgroundPanel panelMain = new BackgroundPanel(backgroundImagePath);
         panelMain.setLayout(new BoxLayout(panelMain, BoxLayout.Y_AXIS));
         //---------------------------------------------------
 
@@ -23,14 +26,15 @@ public class ScreenFirst {
         //---------------------------------------------------
 
         //Criação do texto "Escolha uma opção
-        JLabel senha = new JLabel();
-        senha.setText("Escolha uma opção");
-        senha.setAlignmentX(Component.CENTER_ALIGNMENT);
-        senha.setFont(new Font("Candara", Font.BOLD, 20 ));
-        panelMain.add(senha);
+        JLabel textopcao = new JLabel();
+        textopcao.setText("Escolha uma opção");
+        textopcao.setForeground(Color.WHITE);
+        textopcao.setAlignmentX(Component.CENTER_ALIGNMENT);
+        textopcao.setFont(new Font("Candara", Font.BOLD, 20 ));
+        panelMain.add(textopcao);
 
         //---------------------------------------------------
-        panelMain.add(Box.createVerticalStrut(10));
+        panelMain.add(Box.createVerticalStrut(40));
 
         //---------------------------------------------------
         //Criação do botão "Estudar"
@@ -52,6 +56,23 @@ public class ScreenFirst {
         buttonPratic.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonPratic.setMaximumSize(new Dimension(200, buttonPratic.getPreferredSize().height));
         panelMain.add(buttonPratic);
+        //---------------------------------------------------
+        //---------------------------------------------------
+
+        panelMain.add(Box.createVerticalStrut(50)); //Espaçamento de 10px do que vier abaixo.
+
+        //---------------------------------------------------
+        // Criação da imagem logo.
+        String imagePatch = "C:\\Users\\EDSON JUNIOR\\IdeaProjects\\SQLTrainingE\\src\\img\\sqlte.png";
+        ImageIcon LoginIcon = new ImageIcon(imagePatch);
+        int width = 200;
+        int height = 60;
+        Image scaledImg = LoginIcon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        ImageIcon scaledIcon = new ImageIcon(scaledImg);
+
+        JLabel label = new JLabel(scaledIcon);
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        panelMain.add(label);
         //---------------------------------------------------
 
         frameMain.add(panelMain);

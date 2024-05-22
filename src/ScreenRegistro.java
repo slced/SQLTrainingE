@@ -15,14 +15,19 @@ public class ScreenRegistro {
         frameMain.setTitle("Tela de Registro");
         //---------------------------------------------------
 
+        // Caminho da imagem de fundo
+        String backgroundImagePath = "C:\\Users\\EDSON JUNIOR\\IdeaProjects\\SQLTrainingE\\src\\img\\backgroundlogin.png";
+
         //Criação do Layout principal da página
-        JPanel panelMain = new JPanel();
+        BackgroundPanel panelMain = new BackgroundPanel(backgroundImagePath);
         panelMain.setLayout(new BoxLayout(panelMain, BoxLayout.Y_AXIS));
         //---------------------------------------------------
 
         panelMain.add(Box.createVerticalStrut(10)); //Espaçamento de 10px do que vier abaixo.
 
         //---------------------------------------------------
+
+
 
         //Criação da imagem na tela de registro.
 
@@ -47,6 +52,7 @@ public class ScreenRegistro {
 
         JLabel usuario = new JLabel();
         usuario.setText("Usuário");
+        usuario.setForeground(Color.WHITE);
         usuario.setAlignmentX(Component.CENTER_ALIGNMENT);
         usuario.setFont(new Font("Candara", Font.BOLD, 20));
         panelMain.add(usuario);
@@ -74,6 +80,7 @@ public class ScreenRegistro {
 
         JLabel senha = new JLabel();
         senha.setText("Senha");
+        senha.setForeground(Color.WHITE);
         senha.setAlignmentX(Component.CENTER_ALIGNMENT);
         senha.setFont(new Font("Candara", Font.BOLD, 20));
         panelMain.add(senha);
@@ -102,6 +109,10 @@ public class ScreenRegistro {
         buttonRegistro.setAlignmentX(Component.CENTER_ALIGNMENT);
         buttonRegistro.setMaximumSize(new Dimension(200, buttonRegistro.getPreferredSize().height));
         panelMain.add(buttonRegistro);
+        //---------------------------------------------------
+
+        panelMain.add(Box.createVerticalStrut(10));
+
         //---------------------------------------------------
 
         //Criação do botão "VOLTAR"
