@@ -1,9 +1,7 @@
 import Database.DBConnection;
+import Database.DBConnectionEmpdbste;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DBCommands {
     public static boolean verificarUsuario(String usuario, String senha) {
@@ -45,6 +43,53 @@ public class DBCommands {
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
+        }
+    }
+
+    public static String executarComandoSQL(String comando) {
+        try {
+            Connection conexao = DBConnectionEmpdbste.conectar();
+            PreparedStatement stmt = conexao.prepareStatement(comando);
+            boolean resultado = stmt.execute();
+
+            // Se o comando for uma consulta SELECT
+            if (resultado) {
+                ResultSet rs = stmt.getResultSet();
+                ResultSetMetaData metaData = rs.getMetaData();
+                int numColunas = metaData.getColumnCount();
+
+                StringBuilder resultadoString = new StringBuilder();
+                resultadoString.append("<html><table border='1'><tr>");
+
+                // Adicionando os nomes das colunas à primeira linha da tabela
+                for (int i = 1; i <= numColunas; i++) {
+                    resultadoString.append("<th>").append(metaData.getColumnName(i)).append("</th>");
+                }
+                resultadoString.append("</tr>");
+
+                // Adicionando os valores das colunas às linhas da tabela
+                while (rs.next()) {
+                    resultadoString.append("<tr>");
+                    for (int i = 1; i <= numColunas; i++) {
+                        resultadoString.append("<td>").append(rs.getString(i)).append("</td>");
+                    }
+                    resultadoString.append("</tr>");
+                }
+
+                resultadoString.append("</table></html>");
+
+                rs.close();
+                stmt.close();
+                DBConnectionEmpdbste.fecharConexao();
+                return resultadoString.toString();
+            } else {
+                stmt.close();
+                DBConnectionEmpdbste.fecharConexao();
+                return "Comando executado com sucesso.";
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return "Erro ao executar o comando, tente novamente! ";
         }
     }
 

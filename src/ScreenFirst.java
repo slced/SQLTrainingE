@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ScreenFirst {
     public ScreenFirst(){
@@ -74,6 +76,19 @@ public class ScreenFirst {
         label.setAlignmentX(Component.CENTER_ALIGNMENT);
         panelMain.add(label);
         //---------------------------------------------------
+        //AÇÃO BOTÃO PRATICAR
+
+        buttonPratic.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+                frame.dispose();
+                new ScreenPratica();
+            }
+        });
+
+
+        //-------------------------------------------------
 
         frameMain.add(panelMain);
         frameMain.setVisible(true);
