@@ -136,6 +136,13 @@ public class ScreenLogin {
             }
         });
 
+        senhaField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                buttonLogin.doClick();
+            }
+        });
+
         // Adiciona o painel principal ao frame
         frameMain.add(panelMain);
         frameMain.setVisible(true);

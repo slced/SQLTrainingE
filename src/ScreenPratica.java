@@ -63,6 +63,38 @@ public class ScreenPratica {
         panelMain.add(Box.createVerticalStrut(10));
         //---------------------------------------------------
 
+        JButton btnbd = new JButton();
+        btnbd.setText("INFORMAÇÕES");
+        btnbd.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnbd.setMaximumSize(new Dimension(150, btnbd.getPreferredSize().height));
+        panelMain.add(btnbd, BorderLayout.CENTER);
+
+        //
+
+        JButton btnback = new JButton();
+        btnback.setText("VOLTAR");
+        btnback.setAlignmentX(Component.CENTER_ALIGNMENT);
+        btnback.setMaximumSize(new Dimension(150, btnbd.getPreferredSize().height));
+        panelMain.add(btnback, BorderLayout.CENTER);
+
+        //
+
+        btnbd.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ScreenInfo();
+            }
+        });
+
+        btnback.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = (JFrame) SwingUtilities.getWindowAncestor((Component) e.getSource());
+                frame.dispose();
+                new ScreenFirst();
+            }
+        });
+
         comandoField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
